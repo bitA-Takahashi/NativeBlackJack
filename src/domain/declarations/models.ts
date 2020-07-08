@@ -7,4 +7,8 @@ export type CardType = [Suit, Number];
 
 export interface CardState {
   deck: CardType[];
+  playerHands: CardType[];
+  isStandPlayer: boolean;
+  dealerHands: CardType[];
+  isStandDealer: boolean;
 }

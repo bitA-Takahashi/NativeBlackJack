@@ -1,16 +1,25 @@
 import React, { FC } from 'react';
 import styled from 'styled-components/native';
 import { Card } from '../atoms/Card';
-import { CardType } from '../../domain/declarations/models';
 import { Button } from '../atoms/Button';
+import { setDrawDeck, setPlayerIncrementHand, setStandPlayer } from '../../redux/modules/card';
+import { dispatch } from '../../redux/store';
+import { CardType } from '../../domain/declarations/models';
 
 interface Props {
   playerHands: CardType[];
-  onPressHit: () => void;
-  onPressStand: () => void;
 }
 
-export const PlayerPanel: FC<Props> = ({ playerHands, onPressHit, onPressStand }) => {
+export const PlayerPanel: FC<Props> = ({ playerHands }) => {
+  const handleHitPlayer = () => {
+    dispatch(setPlayerIncrementHand());
+    dispatch(setDrawDeck());
+  };
+
+  const handleStandPlayer = () => {
+    dispatch(setStandPlayer(true));
+  };
+
   return (
     <Component>
       <Position>Player</Position>
@@ -21,8 +30,8 @@ export const PlayerPanel: FC<Props> = ({ playerHands, onPressHit, onPressStand }
         ))}
       </Hands>
       <ButtonWrapper>
-        <Button onPress={onPressHit}>hit</Button>
-        <Button onPress={onPressStand}>stand</Button>
+        <Button onPress={handleHitPlayer}>hit</Button>
+        <Button onPress={handleStandPlayer}>stand</Button>
       </ButtonWrapper>
     </Component>
   );

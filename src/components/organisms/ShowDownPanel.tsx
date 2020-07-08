@@ -1,19 +1,20 @@
 import React, { FC } from 'react';
 import styled from 'styled-components/native';
-import { calcHandsValue } from '../../domain/logics/calcHandsValue';
 import { gameResult } from '../../domain/logics/gameResult';
-import { CardType } from '../../domain/declarations/models';
 import { Button } from '../atoms/Button';
+import { setInitializeGame } from '../../redux/modules/card';
+import { dispatch } from '../../redux/store';
 
 interface Props {
-  playerHands: CardType[];
-  dealerHands: CardType[];
+  playerScore: number;
+  dealerScore: number;
 }
 
-export const ShowDownPanel: FC<Props> = ({ playerHands, dealerHands }) => {
-  // TODO: 親で計算してから渡せばここが消えそう
-  const playerScore = calcHandsValue(playerHands);
-  const dealerScore = calcHandsValue(dealerHands);
+export const ShowDownPanel: FC<Props> = ({ playerScore, dealerScore }) => {
+  const reloadGame = () => {
+    dispatch(setInitializeGame());
+  };
+
   return (
     <Component>
       <Position>ShowDown</Position>
@@ -22,7 +23,7 @@ export const ShowDownPanel: FC<Props> = ({ playerHands, dealerHands }) => {
         <ResultItem>Dealer {dealerScore}</ResultItem>
         <ResultItem>{gameResult(playerScore, dealerScore)}</ResultItem>
       </Result>
-      <Button onPress={() => alert('もう一回的な処理書く')}>one more</Button>
+      <Button onPress={reloadGame}>one more</Button>
     </Component>
   );
 };
