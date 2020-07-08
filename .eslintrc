@@ -36,7 +36,6 @@
     "dot-location": ["error", "property"],
     "no-implicit-globals": "error",
     "no-invalid-this": "error",
-    "no-param-reassign": ["error", { "props": false }],
     "no-unmodified-loop-condition": "error",
     "no-useless-call": "error",
     "no-void": "off",
