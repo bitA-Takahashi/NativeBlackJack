@@ -1,17 +1,17 @@
 import React, { FC, useState } from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
-import { getInitialCards } from '../../domain/logics/getInitialCards';
 import { CardType } from '../../domain/declarations/models';
-import { shuffle } from '../../domain/logics/shuffle';
 import { PlayerPanel } from '../molecules/PlayerPanel';
 import { DealerPanel } from '../molecules/DealerPanel';
 import { ShowDownPanel } from '../molecules/ShowDownPanel';
 import { judgeHandStatus } from '../../domain/logics/judgeHandStatus';
 import { calcHandsValue } from '../../domain/logics/calcHandsValue';
+import { useSelector } from 'react-redux';
+import { deckSelector } from '../../redux/selectors/card';
 
 export const GameTable: FC = () => {
-  const deck = shuffle(getInitialCards());
+  const deck = useSelector(deckSelector);
   // TODO: マジックナンバーなんとかしたい
   // imo: deck.shift() が使えるかと。そうすればhitCountの管理は不要になる
   const [playerHands, setPlayerHands] = useState<CardType[]>([deck[0]]);
@@ -49,4 +49,6 @@ export const GameTable: FC = () => {
   );
 };
 
-const Component = styled.View``;
+const Component = styled.View`
+  width: 90%;
+`;
