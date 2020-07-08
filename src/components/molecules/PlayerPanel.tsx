@@ -20,8 +20,10 @@ export const PlayerPanel: FC<Props> = ({ playerHands, onPressHit, onPressStand }
           <Card key={index} value={value} />
         ))}
       </Hands>
-      <Button onPress={onPressHit}>hit</Button>
-      <Button onPress={onPressStand}>stand</Button>
+      <ButtonWrapper>
+        <Button onPress={onPressHit}>hit</Button>
+        <Button onPress={onPressStand}>stand</Button>
+      </ButtonWrapper>
     </Component>
   );
 };
@@ -36,5 +38,9 @@ const Position = styled.Text`
 
 const Hands = styled.View`
   margin: 10px 0;
+  flex-direction: row;
+`;
+
+const ButtonWrapper = styled.View`
   flex-direction: row;
 `;
