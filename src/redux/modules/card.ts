@@ -5,7 +5,7 @@ import { shuffle } from '../../domain/logics/shuffle';
 
 // TODO: あとでスライスをバラす
 export const initialState: CardState = {
-  deck: shuffle(getInitialCards()),
+  deck: [],
   playerHands: [],
   isStandPlayer: false,
   dealerHands: [],
@@ -16,19 +16,21 @@ const slice = createSlice({
   name: 'card',
   initialState,
   reducers: {
-    setPlayerIncrementHand: (state) => {
-      state.playerHands = [...state.playerHands, state.deck[0]];
-    },
-    setDealerIncrementHand: (state) => {
-      state.dealerHands = [...state.dealerHands, state.deck[0]];
-    },
-    setDrawDeck: (state) => {
-      state.deck = state.deck.filter((card, index) => index !== 0);
-    },
     setInitializeGame: (state) => {
+      state.deck = shuffle(getInitialCards());
+      state.isStandPlayer = false;
+      state.isStandDealer = false;
       state.playerHands = [state.deck[0], state.deck[2]];
       state.dealerHands = [state.deck[1], state.deck[3]];
       state.deck = state.deck.filter((card, index) => index > 3);
+    },
+    setHitPlayer: (state) => {
+      state.playerHands = [...state.playerHands, state.deck[0]];
+      state.deck = state.deck.filter((card, index) => index !== 0);
+    },
+    setHitDealer: (state) => {
+      state.dealerHands = [...state.dealerHands, state.deck[0]];
+      state.deck = state.deck.filter((card, index) => index !== 0);
     },
     setStandPlayer: (state, { payload }: { payload: boolean }) => {
       state.isStandPlayer = payload;
@@ -40,11 +42,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
-export const {
-  setPlayerIncrementHand,
-  setDealerIncrementHand,
-  setDrawDeck,
-  setInitializeGame,
-  setStandPlayer,
-  setStandDealer,
-} = slice.actions;
+export const { setInitializeGame, setHitPlayer, setHitDealer, setStandPlayer, setStandDealer } = slice.actions;

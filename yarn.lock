@@ -1501,6 +1501,14 @@ ajv@^6.10.0, ajv@^6.10.2:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+animated@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/animated/-/animated-0.2.2.tgz#04af7846ad0b9b8d1f0472cc53d82b8efeb4a751"
+  integrity sha512-7pMzS0Sk2lA6/JT6he+apuy3GnDWUWVCurHMrpsbT9ugeLe80kpDQWjZQvkFiU9o7LsPGydPnoZpJsmt1HPPMA==
+  dependencies:
+    invariant "^2.2.0"
+    normalize-css-color "^1.0.1"
+
 ansi-colors@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-1.1.0.tgz#6374b4dd5d4718ff3ce27a671a3b1cad077132a9"
@@ -3541,7 +3549,7 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -4597,7 +4605,7 @@ noop-fn@^1.0.0:
   resolved "https://registry.yarnpkg.com/noop-fn/-/noop-fn-1.0.0.tgz#5f33d47f13d2150df93e0cb036699e982f78ffbf"
   integrity sha1-XzPUfxPSFQ35PgywNmmemC94/78=
 
-normalize-css-color@^1.0.2:
+normalize-css-color@^1.0.1, normalize-css-color@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/normalize-css-color/-/normalize-css-color-1.0.2.tgz#02991e97cccec6623fe573afbbf0de6a1f3e9f8d"
   integrity sha1-Apkel8zOxmI/5XOvu/Deah8+n40=
@@ -5269,6 +5277,16 @@ react-native-web@~0.11.7:
     scheduler "0.15.0"
     stacktrace-parser "^0.1.3"
     whatwg-fetch "^3.0.0"
+
+react-primitives@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/react-primitives/-/react-primitives-0.8.1.tgz#50ae6eb29ab3fe81848510ab7c34adefeb59330e"
+  integrity sha512-7L0jG9pOp70f+TtDiw9YXCPmBRCfUD+PPWhS7LBuiPSBV6hEAY8UQWX4zt06ueHoHivakmyk6y1Lbm2jXVl09A==
+  dependencies:
+    animated "^0.2.2"
+    create-react-class "^15.6.3"
+    prop-types "^15.7.2"
+    react-timer-mixin "^0.13.4"
 
 react-redux@^7.2.0:
   version "7.2.0"

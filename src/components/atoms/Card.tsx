@@ -30,9 +30,6 @@ const Component = styled.View`
   position: relative;
   align-items: center;
   justify-content: center;
-  &:not(:first-of-type) {
-    margin-left: 5px;
-  }
 `;
 
 const Suit = styled.Text<{ suitColor: number; isHidden?: boolean }>`

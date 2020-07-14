@@ -13,18 +13,42 @@ interface Props {
   dealerHands: CardType[];
   isStandPlayer: boolean;
   isStandDealer: boolean;
+  handleHitPlayer: () => void;
+  handleHitDealer: () => void;
+  handleStandPlayer: () => void;
+  handleStandDealer: () => void;
+  handleReloadGame: () => void;
 }
 
-export const GameTableScreen: FC<Props> = ({ playerHands, dealerHands, isStandPlayer, isStandDealer }) => {
+export const GameTableScreen: FC<Props> = ({
+  playerHands,
+  dealerHands,
+  isStandPlayer,
+  isStandDealer,
+  handleHitPlayer,
+  handleHitDealer,
+  handleStandPlayer,
+  handleStandDealer,
+  handleReloadGame,
+}) => {
   return (
     <Component>
-      <DealerPanel dealerHands={dealerHands} isStandPlayer={isStandPlayer} />
-      <PlayerPanel playerHands={playerHands} />
+      <DealerPanel
+        dealerHands={dealerHands}
+        isStandPlayer={isStandPlayer}
+        handleHitDealer={handleHitDealer}
+        handleStandDealer={handleStandDealer}
+      />
+      <PlayerPanel playerHands={playerHands} handleHitPlayer={handleHitPlayer} handleStandPlayer={handleStandPlayer} />
 
       <Text>{judgeHandStatus(calcHandsValue(playerHands))}</Text>
 
       {isStandPlayer && isStandDealer && (
-        <ShowDownPanel playerScore={calcHandsValue(playerHands)} dealerScore={calcHandsValue(dealerHands)} />
+        <ShowDownPanel
+          playerScore={calcHandsValue(playerHands)}
+          dealerScore={calcHandsValue(dealerHands)}
+          handleReloadGame={handleReloadGame}
+        />
       )}
     </Component>
   );

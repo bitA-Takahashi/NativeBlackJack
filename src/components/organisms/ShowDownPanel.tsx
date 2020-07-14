@@ -2,19 +2,14 @@ import React, { FC } from 'react';
 import styled from 'styled-components/native';
 import { gameResult } from '../../domain/logics/gameResult';
 import { Button } from '../atoms/Button';
-import { setInitializeGame } from '../../redux/modules/card';
-import { dispatch } from '../../redux/store';
 
 interface Props {
   playerScore: number;
   dealerScore: number;
+  handleReloadGame: () => void;
 }
 
-export const ShowDownPanel: FC<Props> = ({ playerScore, dealerScore }) => {
-  const reloadGame = () => {
-    dispatch(setInitializeGame());
-  };
-
+export const ShowDownPanel: FC<Props> = ({ playerScore, dealerScore, handleReloadGame }) => {
   return (
     <Component>
       <Position>ShowDown</Position>
@@ -23,7 +18,7 @@ export const ShowDownPanel: FC<Props> = ({ playerScore, dealerScore }) => {
         <ResultItem>Dealer {dealerScore}</ResultItem>
         <ResultItem>{gameResult(playerScore, dealerScore)}</ResultItem>
       </Result>
-      <Button onPress={reloadGame}>one more</Button>
+      <Button onPress={handleReloadGame}>one more</Button>
     </Component>
   );
 };

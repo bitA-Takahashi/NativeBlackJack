@@ -1,9 +1,15 @@
 import React, { FC, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { dispatch } from '../../../redux/store';
-import { setInitializeGame } from '../../../redux/modules/card';
+import { store } from '../../../redux/store';
+import {
+  setHitDealer,
+  setHitPlayer,
+  setStandDealer,
+  setStandPlayer,
+  setInitializeGame,
+} from '../../../redux/modules/card';
 import { GameTableScreen } from './GameTableScreen';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   dealerHandSelector,
   isStandDealerSelector,
@@ -12,6 +18,8 @@ import {
 } from '../../../redux/selectors/card';
 
 export const GameTable: FC = () => {
+  type AppDispatch = typeof store.dispatch;
+  const dispatch: AppDispatch = useDispatch();
   const playerHands = useSelector(playerHandSelector);
   const dealerHands = useSelector(dealerHandSelector);
   const isStandPlayer = useSelector(isStandPlayerSelector);
@@ -26,6 +34,21 @@ export const GameTable: FC = () => {
       <GameTableScreen
         playerHands={playerHands}
         dealerHands={dealerHands}
+        handleHitPlayer={() => {
+          dispatch(setHitPlayer());
+        }}
+        handleHitDealer={() => {
+          dispatch(setHitDealer());
+        }}
+        handleStandPlayer={() => {
+          dispatch(setStandPlayer(true));
+        }}
+        handleStandDealer={() => {
+          dispatch(setStandDealer(true));
+        }}
+        handleReloadGame={() => {
+          dispatch(setInitializeGame());
+        }}
         isStandPlayer={isStandPlayer}
         isStandDealer={isStandDealer}
       />
